@@ -1,0 +1,62 @@
+{% extends 'default/base_layout.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/build/css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/build/css/separate/vendor/select2.min.css">
+<link rel="stylesheet" href="/static/build/css/lib/bootstrap-sweetalert/sweetalert.css">
+<link rel="stylesheet" href="/static/build/css/separate/vendor/sweet-alert-animations.min.css">
+{% endblock %}
+{% block content %}
+<form class="form-cliente" autocomplete="off" method="post" enctype="multipart/form-data" role="form">{% csrf_token %}
+  <div class="box-typical box-typical-padding">
+    <div class="row">
+      <div class="col-lg-2 col-sm-4 text-center">
+        <h2 class="m-t-lg"><i class="text-muted font-icon font-icon-question"></i></h2>
+        <h5 class="m-b semibold">Inserir Folha de ponto</h5>
+        <p>
+          Você poderá ver os todos as folhs de ponto criadas ao voltar para a tela de listagem.
+        </p>
+      </div>
+      <div class="col-lg-10 col-sm-8">
+        <h5 class="m-t-lg with-border">Nova folha de ponto</h5>
+        <div class="row">
+          <div class="col-lg-4">
+            <fieldset class="form-group">
+              <label class="form-label semibold" for="cnpj">PDF</label>
+              {{ form.file }}
+            </fieldset>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary swal-btn-success">
+                Salvar
+              </button>
+              <input type="checkbox" class="hidden" name="add_save_another" id="checkbox-add-save-another" value="1" />
+              <button type="button" class="btn btn-secondary save-another">Salvar e adicionar outro</button>
+              <div class="pull-right">
+                <a class="btn btn-secondary-outline" href="">
+                  Cancelar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+{% endblock %}
+{% block javascript %}
+<script src="/static/build/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/build/js/lib/select2/select2.full.min.js"></script>
+<script src="/static/build/js/lib/html5-form-validation/jquery.validation.min.js"></script>
+<script src="/static/build/js/lib/jquery-validation/localization/messages_pt_BR.min.js"></script>
+<script src="/static/build/js/lib/input-mask/jquery.mask.min.js" type="text/javascript"></script>
+<script src="/static/build/js/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+{% endblock %}

@@ -1,0 +1,244 @@
+{% extends "default/panel/base_layout.html" %} 
+{% load staticfiles %}
+{% load indexes %}
+{% block page_info %}
+<li>
+	<a class="active">Home</a>
+</li>
+{% endblock %}
+{% block content %}
+
+		<div class="widget-8 panel no-border bg-complete no-margin widget-loader-bar col-lg-2">
+			<div class="container-xs-height full-height">
+				<div class="row-xs-height">
+					<div class="col-xs-height col-top">
+						<div class="panel-heading top-left top-right">
+							<div class="panel-title text-black hint-text">
+								<span class="font-montserrat fs-11 all-caps">Empreendimentos
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-xs-height ">
+					<div class="col-xs-height col-top relative">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="p-l-20">
+									<h3 class="no-margin p-b-5 text-black">{{empreendimento_count}} </h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="widget-8 panel no-border bg-success no-margin widget-loader-bar col-lg-2">
+			<div class="container-xs-height full-height">
+				<div class="row-xs-height">
+					<div class="col-xs-height col-top">
+						<div class="panel-heading top-left top-right">
+							<div class="panel-title text-black hint-text">
+								<span class="font-montserrat fs-11 all-caps">Lançamentos
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-xs-height ">
+					<div class="col-xs-height col-top relative">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="p-l-20">
+									<h3 class="no-margin p-b-5 text-black">{{empreendimentos_lancamento|length}}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="widget-8 panel no-border bg-complete no-margin widget-loader-bar col-lg-2">
+			<div class="container-xs-height full-height">
+				<div class="row-xs-height">
+					<div class="col-xs-height col-top">
+						<div class="panel-heading top-left top-right">
+							<div class="panel-title text-black hint-text">
+								<span class="font-montserrat fs-11 all-caps">Vendas
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-xs-height ">
+					<div class="col-xs-height col-top relative">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="p-l-20">
+									<h3 class="no-margin p-b-5 text-black">{{vendas_mes_atual|length}}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="widget-8 panel no-border bg-success no-margin widget-loader-bar col-lg-2">
+			<div class="container-xs-height full-height">
+				<div class="row-xs-height">
+					<div class="col-xs-height col-top">
+						<div class="panel-heading top-left top-right">
+							<div class="panel-title text-black hint-text">
+								<span class="font-montserrat fs-11 all-caps">IVV mês atual
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-xs-height ">
+					<div class="col-xs-height col-top relative">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="p-l-20">
+									<h3 class="no-margin p-b-5 text-black">4,6%</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="row p-t-20">
+		<div class="col-sm-6"><div id="piechart_fase_empreendimento" ></div></div>
+		<div class="col-sm-6"><div id="piechart_tipo_empreendimento" ></div></div>
+		</div>
+		<div class="col-sm-4">
+			<h4>Ultimos Lançamentos</h4>
+			<table class="table table-hover table-condensed table-responsive" >
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Data</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for empreendimentos_lancamento in empreendimentos_lancamento|slice:"10" %}
+					<tr>
+						<td class="v-align-middle">
+							{{empreendimentos_lancamento.empreendimento_nome}}
+						</td>
+						<td class="v-align-middle">
+							{{empreendimentos_lancamento.data_lancamento|date:"d/M/Y"}}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-4">
+			<h4>Ultimas Vendas</h4>
+			<table class="table table-hover table-condensed table-responsive" >
+				<thead>
+					<tr>
+						<th>Empreendimento</th>
+						<th>Data</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for vendas_mes_atual in vendas_mes_atual|slice:"10" %}
+					<tr>
+						<td class="v-align-middle">
+							{{vendas_mes_atual.id_empreendimento.empreendimento_nome}}
+						</td>
+						<td class="v-align-middle">
+							{{vendas_mes_atual.data_venda|date:"d/M/Y"}}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+<div class="col-md-6">
+    <h4>Oferta/Venda Quantidade de quartos</h4>
+
+<table class="table table-responsive" id="table-quartos">
+<thead>
+    <th>Qtd/Quartos</th>
+    {% for i in vendas_ofertas.columns %}
+        <th class="text-center">{{i}}</th>
+    {% endfor %}
+</thead>
+    <tbody>
+    {% for z in vendas_ofertas.data %}
+    <tr>
+        <td>{{vendas_ofertas.index|index:forloop.counter0}}</td>
+        {% for i in z %}
+	    <td class="text-center"> {{i|floatformat}} </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+            <div class="col-md-6">
+    <h4>Quantidade de quartos / Fase do empreendimento</h4>
+
+<table class="table table-responsive" id="table-fase">
+<thead>
+    <th>Qtd/Quartos</th>
+    {% for i in quartos_fase.columns %}
+        <th class="text-center">{{i}}</th>
+    {% endfor %}
+</thead>
+    <tbody>
+    {% for z in quartos_fase.data %}
+    <tr>
+        <td>{{quartos_fase.index|index:forloop.counter0}}</td>
+        {% for i in z %}
+	    <td class="text-center"> {{i|floatformat}} </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+            <div class="col-md-12">
+    <h4>Tabela 01 - IVV</h4>
+
+<table class="table table-responsive" id="table-ivv">
+<thead>
+    <th>Mês</th>
+    {% for i in table_ivv.columns %}
+        <th class="text-center">{{i|floatformat}}</th>
+    {% endfor %}
+</thead>
+    <tbody>
+    {% for z in table_ivv.data %}
+    <tr>
+        <td>{{table_ivv.index|index:forloop.counter0|to_int|month_name}}</td>
+        {% for i in z %}
+	    {%if i|floatformat == "nan" %}
+        <td class="text-center"> - </td>
+        {%else%}
+        <td class="text-center"> {{i|floatformat}} </td>
+        {%endif%}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+	var pie_data_faseempreendimento = {{empreendimento_group_fase|safe}}
+	var pie_data_tipoempreendimento = {{empreendimento_group_tipo|safe}}
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static 'js/default/custom-highcharts.js' %}" type="text/javascript"></script>
+{% endblock %}
