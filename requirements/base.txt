@@ -19,3 +19,4 @@ django-model-utils==2.6.1
 pytz==2016.10
 python-decouple
 dj_database_url
+psycopg2
