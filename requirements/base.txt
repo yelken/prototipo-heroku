@@ -18,3 +18,4 @@ django-model-utils==2.6.1
 # Time zones support
 pytz==2016.10
 python-decouple
+dj_database_url
