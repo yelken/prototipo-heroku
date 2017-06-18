@@ -1,7 +1,7 @@
 from .base import *
 #STATIC_ROOT = '/var/www/django/static'
 MEDIA_ROOT = '/var/www/django/media'
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     ('3Y', 'contato@3ysoftwarehouse.com.br'),
@@ -100,3 +100,8 @@ LOGGING = {
         }
     }
 }
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
