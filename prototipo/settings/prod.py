@@ -1,5 +1,5 @@
 from .base import *
-STATIC_ROOT = '/var/www/django/static'
+#STATIC_ROOT = '/var/www/django/static'
 MEDIA_ROOT = '/var/www/django/media'
 DEBUG = False
 
