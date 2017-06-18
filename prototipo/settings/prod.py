@@ -1,7 +1,7 @@
 from .base import *
 #STATIC_ROOT = '/var/www/django/static'
 MEDIA_ROOT = '/var/www/django/media'
-DEBUG = False
+DEBUG = True
 
 ADMINS = (
     ('3Y', 'contato@3ysoftwarehouse.com.br'),
@@ -9,7 +9,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['still-wildwood-29016.herokuapp.com']
+ALLOWED_HOSTS = ['still-wildwood-29016.herokuapp.com', '127.0.0.1']
 
 SESSION_COOKIE_AGE = 28800
 

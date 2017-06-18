@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.views import defaults as default_views
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 
@@ -10,6 +11,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('apps.core.urls', namespace='core')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
