@@ -16,7 +16,6 @@ from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 def base_dir_join(*args):
     return os.path.join(BASE_DIR, *args)
@@ -146,18 +145,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-# STATIC_ROOT = str(base_dir_join('staticfiles'))
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     base_dir_join('static'),
-# )
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = str(base_dir_join('staticfiles'))
 STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    base_dir_join('static'),
 )
 
 # MEDIA CONFIGURATION

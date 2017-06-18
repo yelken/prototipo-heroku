@@ -1,7 +1,7 @@
 from .base import *
 #STATIC_ROOT = '/var/www/django/static'
-MEDIA_ROOT = '/var/www/django/media'
-DEBUG = False
+#MEDIA_ROOT = '/var/www/django/media'
+DEBUG = True
 
 ADMINS = (
     ('3Y', 'contato@3ysoftwarehouse.com.br'),
