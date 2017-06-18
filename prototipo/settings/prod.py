@@ -9,7 +9,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['still-wildwood-29016.herokuapp.com']
 
 SESSION_COOKIE_AGE = 28800
 
