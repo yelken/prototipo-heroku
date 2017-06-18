@@ -20,7 +20,7 @@
   width: 1em;
 }
 .flag-icon-eu {
-  background-image: url(../img/flags/4x3/eu.svg);
+  /*  background-image: url(../img/flags/4x3/eu.svg);*/
 }
 .flag-icon-eu.flag-icon-squared {
   background-image: url(../img/flags/1x1/eu.svg);
