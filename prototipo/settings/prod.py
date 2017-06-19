@@ -9,7 +9,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['still-wildwood-29016.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 SESSION_COOKIE_AGE = 28800
 
@@ -18,16 +18,16 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'prototipo',
-        'USER': 'myuser',
-        'PASSWORD': '',
-        'HOST': ''
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 
 # SECURITY CONFIGURATION
 # ------------------------------------------------------------------------------
